@@ -74,7 +74,7 @@ class AdminBureauController {
                 $data[0]->setPhoto($photo);
 
                 $nb = $this->driver->updateMembre($data[0]);
-                if($nb) {
+                if(isset($nb)) {
                     header('location:index.php?action=cl_bureau');
                 }else{
                     echo "Echec lors de la mise à jour";

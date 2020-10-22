@@ -2,6 +2,7 @@
 
 class Joueurs {
     private $id_joueur;
+    private $sexe;
     private $nom;
     private $prenom;
     private $date_naissance;
@@ -124,6 +125,26 @@ class Joueurs {
     public function setId_classement($id_classement)
     {
         $this->id_classement = $id_classement;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of sexe
+     */ 
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+    /**
+     * Set the value of sexe
+     *
+     * @return  self
+     */ 
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
 
         return $this;
     }

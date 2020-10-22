@@ -72,7 +72,7 @@ class AdminPedaController {
                 $data[0]->setPhoto($photo);
 
                 $nb = $this->driver->updateEns($data[0]);
-                if($nb) {
+                if(isset($nb)) {
                     header('location:index.php?action=ens_equipe');
                 }else{
                     echo "Echec lors de la mise à jour";

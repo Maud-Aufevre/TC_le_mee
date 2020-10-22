@@ -74,8 +74,7 @@ class Router {
                         break;
                     case 'delete_ens':
                         if(isset($_GET['id'])){
-                            $id = $_GET['id'];
-                            $this->admine->removeEns($id);
+                            $this->admine->removeEns();
                         break;
                         }else{
                             throw new Exception('paramètre non défini');
@@ -88,6 +87,39 @@ class Router {
 
                         case 'comp_joueurs':
                             $this->adminj->listJoueurs();
+                            break;
+                        case 'add_joueur':
+                            $this->adminj->insertJoueur();
+                            break;
+                        case 'delete_joueur':
+                            if(isset($_GET['id'])){
+
+                                $this->adminj->removeJoueur();
+                                break;
+                            }else{
+                                throw new Exception('paramètre non défini');
+                            }
+                        case 'modif_joueur':
+                            $this->adminj->modifJoueur();
+                            break;
+
+                        //routes pour les équipes
+
+                        case 'comp_jeunes':
+                        case 'comp_adultes':
+                            $this->adminj->listEquipes();
+                            break;
+                        case 'add_eq_jeunes':
+                        case 'add_eq_adultes':
+                            $this->adminj->insertEquipe();
+                            break;
+                        case 'delete_eq_jeunes':
+                        case 'delete_eq_adultes':
+                            $this->adminj->removeEquipe();
+                            break;
+                        case 'modif_eq_jeunes':
+                        case 'modif_eq_adultes':
+                            $this->adminj->modifEquipe();
                             break;
                         
                     

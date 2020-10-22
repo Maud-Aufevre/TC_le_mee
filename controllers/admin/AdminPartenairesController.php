@@ -68,7 +68,7 @@ class AdminPartenairesController {
                 $data[0]->setDescription($description);
 
                 $nb = $this->driver->updatePart($data[0]);
-                if($nb) {
+                if(isset($nb)) {
                     header('location:index.php?action=cl_part');
                 }else{
                     echo "Echec lors de la mise à jour";

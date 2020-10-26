@@ -77,8 +77,9 @@ ob_start();
                                 <?php } ?>
                             <?php } ?>
                         <?php }else{ ?>
-                            <option value="<?=$joueur->getId_joueur();?>"><?=$joueur->getPrenom();?> <?=$joueur->getPrenom();?> - <?=$joueur->classement;?></option>
-                        <?php } ?>
+                            <?php foreach($joueurs as $joueur){ ?>
+                                <option value="<?=$joueur->getId_joueur();?>"><?=$joueur->getPrenom();?> <?=$joueur->getPrenom();?> - <?=$joueur->classement;?></option>
+                        <?php }} ?>
                     </select>
                 </div>
                 <div class="form-group">
@@ -92,8 +93,9 @@ ob_start();
                                 <?php } ?>
                             <?php } ?>
                         <?php }else{ ?>
-                            <option value="<?=$joueur->getId_joueur();?>"><?=$joueur->getPrenom();?> <?=$joueur->getPrenom();?> - <?=$joueur->classement;?></option>
-                        <?php } ?>
+                            <?php foreach($joueurs as $joueur){ ?>
+                                <option value="<?=$joueur->getId_joueur();?>"><?=$joueur->getPrenom();?> <?=$joueur->getPrenom();?> - <?=$joueur->classement;?></option>
+                        <?php }} ?>
                     </select>
                 </div>
                 <div class="form-group">
@@ -107,8 +109,9 @@ ob_start();
                                 <?php } ?>
                             <?php } ?>
                         <?php }else{ ?>
-                            <option value="<?=$joueur->getId_joueur();?>"><?=$joueur->getPrenom();?> <?=$joueur->getPrenom();?> - <?=$joueur->classement;?></option>
-                        <?php } ?>
+                            <?php foreach($joueurs as $joueur){ ?>
+                                <option value="<?=$joueur->getId_joueur();?>"><?=$joueur->getPrenom();?> <?=$joueur->getPrenom();?> - <?=$joueur->classement;?></option>
+                        <?php }} ?>
                     </select>
                 </div>
                 <div class="form-group">
@@ -122,8 +125,9 @@ ob_start();
                                 <?php } ?>
                             <?php } ?>
                         <?php }else{ ?>
-                            <option value="<?=$joueur->getId_joueur();?>"><?=$joueur->getPrenom();?> <?=$joueur->getPrenom();?> - <?=$joueur->classement;?></option>
-                        <?php } ?>
+                            <?php foreach($joueurs as $joueur){ ?>
+                                <option value="<?=$joueur->getId_joueur();?>"><?=$joueur->getPrenom();?> <?=$joueur->getPrenom();?> - <?=$joueur->classement;?></option>
+                        <?php }} ?>
                     </select>
                 </div>
 

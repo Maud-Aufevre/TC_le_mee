@@ -23,13 +23,13 @@ ob_start();
                 </div>
                 <div class="form-group">
                     <p>Sexe* :</p>
-                    <?= if($data[0]->getSexe(); == 0) { ?>
+                    <?php if($data[0]->getSexe() == 0) { ?>
                     <label class="radio-inline"><input type="radio" name="sexe" value="H" checked>H</label>
                     <label class="radio-inline"><input type="radio" value="F" name="sexe">F</label>
-                    <?= }else{ ?>
+                    <?php }else{ ?>
                         <label class="radio-inline"><input type="radio" name="sexe" value="H" checked>H</label>
                         <label class="radio-inline"><input type="radio" value="F" name="sexe">F</label>
-                    <?= } ?>
+                    <?php } ?>
                 </div>
                 <div class="form-group">
                     <label for="age">Date de naissance* :</label>

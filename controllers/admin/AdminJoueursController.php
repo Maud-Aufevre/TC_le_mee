@@ -16,6 +16,7 @@ class AdminJoueursController {
 
     public function insertJoueur() {
         if(isset($_POST['ajout'])) {
+            $sexe = $_POST['sexe'];
             $nom = trim(htmlentities(addslashes($_POST['nom'])));
             $prenom = trim(htmlentities(addslashes($_POST['prenom'])));
             $date_naissance = trim(htmlentities(addslashes($_POST['age'])));
@@ -25,6 +26,7 @@ class AdminJoueursController {
             $id_classement = $_POST['classement'];
             
             $new = new Joueurs();
+            $new->setSexe($sexe);
             $new->setNom($nom);
             $new->setPrenom($prenom);
             $new->setDate_naissance($date_naissance);

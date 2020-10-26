@@ -22,8 +22,8 @@ ob_start();
                 </div>
                 <div class="form-group">
                     <p>Sexe* :</p>
-                    <label class="radio-inline"><input type="radio" name="sexe" value="H" checked>H</label>
-                    <label class="radio-inline"><input type="radio" value="F" name="sexe">F</label>
+                    <label class="radio-inline"><input type="radio" name="sexe" value="0" checked>H</label>
+                    <label class="radio-inline"><input type="radio" value="1" name="sexe">F</label>
                 </div>
                 <div class="form-group">
                     <label for="age">Date de naissance* :</label>

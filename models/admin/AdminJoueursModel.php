@@ -120,7 +120,7 @@ class AdminJoueursModel extends Driver {
             $sql = "UPDATE joueurs SET sexe=?,nom=?,prenom=?,date_naissance=?,id_classement=?WHERE id_joueur=?";
             $tabJoueur = [$jou->getSexe(),$jou->getNom(),$jou->getPrenom(),$jou->getDate_naissance(),$jou->getId_classement(),$jou->getId_joueur()];
         }else{
-            $sql = "UPDATE joueurs SET nom=?,prenom=?,date_naissance=?,photo=?,id_classement=? WHERE id_joueur=?";
+            $sql = "UPDATE joueurs SET sexe=?,nom=?,prenom=?,date_naissance=?,photo=?,id_classement=? WHERE id_joueur=?";
             $tabJoueur = [$jou->getSexe(),$jou->getNom(),$jou->getPrenom(),$jou->getDate_naissance(),$jou->getPhoto(),$jou->getId_classement(),$jou->getId_joueur()];
         }
         

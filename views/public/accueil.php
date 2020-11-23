@@ -97,7 +97,7 @@ ob_start();
         <div id="partenaires">
         <?php foreach($datasPart as $d) { ?>
         <div class="part">
-            <a href="https://<?= $d->getSite_web() ?>" target="_blank">
+            <a href="<?= $d->getSite_web() ?>" target="_blank">
                 <img src="./assets/images/partenaires/<?= $d->getLogo() ?>" class="partLogo" alt="logo de <?= $d->getNom() ?>"/>
             </a>
             <div class="partNom">

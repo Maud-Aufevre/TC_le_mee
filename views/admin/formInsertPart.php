@@ -11,6 +11,11 @@ ob_start();
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-4">
+            <?php
+                if(isset($error)){
+                    echo"<div class='alert alert-danger text-center'>$error</div>";
+                }
+            ?>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nom">Nom :</label>
@@ -23,6 +28,10 @@ ob_start();
                 <div class="form-group">
                     <label for="logo">Logo :</label>
                     <input type="File" id="logo" name="logo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="des">Site web (url) :</label>
+                    <input type="url" id="site_web" name="site_web" placeholder="Saisir l'url du partenaire" class="form-control">
                 </div>
                 <button type="submit" name="ajout" class="btn btn-warning btn-block">Ajouter</button>
             </form>

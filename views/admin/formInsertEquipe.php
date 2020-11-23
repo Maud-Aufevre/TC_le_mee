@@ -21,6 +21,11 @@ ob_start();
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-4">
+            <?php
+                if(isset($error)){
+                    echo"<div class='alert alert-danger text-center'>$error</div>";
+                }
+            ?>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nom">Nom* :</label>
@@ -28,8 +33,8 @@ ob_start();
                 </div>
                 <div class="form-group">
                     <p>Sexe* :</p>
-                        <label class="radio-inline"><input type="radio" name="sexe" value="H" checked>H</label>
-                        <label class="radio-inline"><input type="radio" value="F" name="sexe">F</label>
+                        <label class="radio-inline"><input type="radio" name="sexe" value="0" checked>H</label>
+                        <label class="radio-inline"><input type="radio" value="1" name="sexe">F</label>
                 </div>
                 <div class="form-group">
                     <label for="categorie">Catégorie* :</label>
@@ -120,7 +125,8 @@ ob_start();
                             <option value="">Choisir un joueur</option>
                         <?php if($_GET['action']=='add_eq_jeunes'){ ?>
                             <?php foreach($joueurs as $joueur){ ?>
-                                <?php if($joueur->age <= 18){ ?>
+                                <?php if($joueur->age <= 18){ var_dump('ok');?>
+                                    
                                     <option value="<?=$joueur->getId_joueur();?>"><?=$joueur->getPrenom();?> <?=$joueur->getPrenom();?> - <?=$joueur->classement;?></option>
                                 <?php } ?>
                             <?php } ?>

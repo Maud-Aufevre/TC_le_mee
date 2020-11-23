@@ -6,7 +6,6 @@ class Joueurs {
     private $nom;
     private $prenom;
     private $date_naissance;
-    private $photo;
     private $id_classement;
 
     /**
@@ -85,26 +84,6 @@ class Joueurs {
     public function setDate_naissance($date_naissance)
     {
         $this->date_naissance = $date_naissance;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of photo
-     */ 
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
-     * Set the value of photo
-     *
-     * @return  self
-     */ 
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
 
         return $this;
     }

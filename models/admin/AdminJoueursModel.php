@@ -31,7 +31,6 @@ class AdminJoueursModel extends Driver {
             $jou->setNom($row->nom);
             $jou->setPrenom($row->prenom);
             $jou->setDate_naissance($row->date_naissance);
-            $jou->setPhoto($row->photo);
             $jou->setId_classement($row->id_classement);
             $jou->classement = $this->getClass($row->id_classement)->getClassement();
             $jou->age = $this->age($row->date_naissance);
@@ -59,7 +58,6 @@ class AdminJoueursModel extends Driver {
             $jou->setNom($row->nom);
             $jou->setPrenom($row->prenom);
             $jou->setDate_naissance($row->date_naissance);
-            $jou->setPhoto($row->photo);
             $jou->setId_classement($row->id_classement);
             $jou->classement = $this->getClass($row->id_classement)->getClassement();
             array_push($donnees,$jou);
@@ -102,8 +100,8 @@ class AdminJoueursModel extends Driver {
     }
 
     public function addJoueur(Joueurs $jou) {
-        $sql = "INSERT INTO joueurs(sexe,nom,prenom,date_naissance,photo,id_classement) VALUES(:sexe,:nom,:prenom,:date_naissance,:photo,:id_classement)";
-        $res = $this->getRequest($sql, ['sexe'=>$jou->getSexe(),'nom'=>$jou->getNom(),'prenom'=>$jou->getPrenom(),'date_naissance'=>$jou->getDate_naissance(),'photo'=>$jou->getPhoto(),'id_classement'=>$jou->getId_classement()]);
+        $sql = "INSERT INTO joueurs(sexe,nom,prenom,date_naissance,id_classement) VALUES(:sexe,:nom,:prenom,:date_naissance,:id_classement)";
+        $res = $this->getRequest($sql, ['sexe'=>$jou->getSexe(),'nom'=>$jou->getNom(),'prenom'=>$jou->getPrenom(),'date_naissance'=>$jou->getDate_naissance(),'id_classement'=>$jou->getId_classement()]);
 
         return $res;
     }
@@ -116,13 +114,8 @@ class AdminJoueursModel extends Driver {
     }
 
     public function updateJoueur(Joueurs $jou) {
-        if($jou->getPhoto() == "") {
-            $sql = "UPDATE joueurs SET sexe=?,nom=?,prenom=?,date_naissance=?,id_classement=?WHERE id_joueur=?";
-            $tabJoueur = [$jou->getSexe(),$jou->getNom(),$jou->getPrenom(),$jou->getDate_naissance(),$jou->getId_classement(),$jou->getId_joueur()];
-        }else{
-            $sql = "UPDATE joueurs SET sexe=?,nom=?,prenom=?,date_naissance=?,photo=?,id_classement=? WHERE id_joueur=?";
-            $tabJoueur = [$jou->getSexe(),$jou->getNom(),$jou->getPrenom(),$jou->getDate_naissance(),$jou->getPhoto(),$jou->getId_classement(),$jou->getId_joueur()];
-        }
+        $sql = "UPDATE joueurs SET sexe=?,nom=?,prenom=?,date_naissance=?,id_classement=?WHERE id_joueur=?";
+        $tabJoueur = [$jou->getSexe(),$jou->getNom(),$jou->getPrenom(),$jou->getDate_naissance(),$jou->getId_classement(),$jou->getId_joueur()];
         
         $res = $this->getRequest($sql,$tabJoueur);
         $nb = $res->rowCount();
@@ -134,13 +127,13 @@ class AdminJoueursModel extends Driver {
     // EQUIPES
 
     public function getEq($id=null) {
-        if(isset($id)){
-            $sql = "SELECT * FROM equipes WHERE id_equipe=?";
+        if($id == ""){
+            $sql = "SELECT * FROM equipe";
+            $res = $this->getRequest($sql);
+        } else {
+            $sql = "SELECT * FROM equipe WHERE id_equipe=?";
             $res = $this->getRequest($sql, [$id]);
-            $rows = $res->fetch(PDO::FETCH_OBJ);
         }
-        $sql = "SELECT * FROM equipes";
-        $res = $this->getRequest($sql);
         $rows = $res->fetchAll(PDO::FETCH_OBJ);
 
         $donneesJ = [];
@@ -156,30 +149,28 @@ class AdminJoueursModel extends Driver {
                 $eq->{"setId_joueur".$i}($row->{"id_joueur".$i});
                 $eq->{"nom".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->getNom();
                 $eq->{"prenom".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->getPrenom();
-                $eq->{"photo".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->getPhoto();
                 $eq->{"classement".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->classement;
+                $eq->{"date_naissance".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->getDate_naissance();
             }
 
             for($i=3;$i<=5;$i++){
                 $eq->{"setId_joueur".$i}($row->{"id_joueur".$i});
                 $id_j = $row->{"id_joueur".$i};
                 if($id_j != 0){
-
-                    // var_dump($row->{"id_joueur".$i});
                     $eq->{"nom".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->getNom();
                     $eq->{"prenom".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->getPrenom();
-                    $eq->{"photo".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->getPhoto();
                     $eq->{"classement".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->classement;
+                    $eq->{"date_naissance".$i} = $this->getJoueur($row->{"id_joueur".$i})[0]->getDate_naissance();
                 }
             }
 
-            if($eq->getCategorie()=='adulte' || $eq->getCategorie()=='+35' || $eq->getCategorie()=='+45' || $eq->getCategorie()=='+55') {
+            if($eq->getCategorie()=='senior' || $eq->getCategorie()=='+35' || $eq->getCategorie()=='+45' || $eq->getCategorie()=='+55') {
                 array_push($donneesA,$eq);
             }else{
                 array_push($donneesJ,$eq);
             }
         }
-        if($_GET['action'] == 'comp_jeunes'){
+        if($_GET['action'] == 'comp_jeunes' || $_GET['action'] == 'modif_eq_jeunes'){
             return $donneesJ;
         }else{
             return $donneesA;
@@ -187,22 +178,22 @@ class AdminJoueursModel extends Driver {
     }
 
     public function addEquipe(Equipes $eq) {
-        $sql = "INSERT INTO equipes(nom,sexe,categorie,id_joueur1,id_joueur2,id_joueur3,id_joueur4,id_joueur5) VALUES(:nom,:sexe,:categorie,:id_joueur1,:id_joueur2,:id_joueur3,:id_joueur4,:id_joueur5)";
+        $sql = "INSERT INTO equipe(nom,sexe,categorie,id_joueur1,id_joueur2,id_joueur3,id_joueur4,id_joueur5) VALUES(:nom,:sexe,:categorie,:id_joueur1,:id_joueur2,:id_joueur3,:id_joueur4,:id_joueur5)";
         $res = $this->getRequest($sql, ['nom'=>$eq->getNom(),'sexe'=>$eq->getSexe(),'categorie'=>$eq->getCategorie(),'id_joueur1'=>$eq->getId_joueur1(),'id_joueur2'=>$eq->getId_joueur2(),'id_joueur3'=>$eq->getId_joueur3(),'id_joueur4'=>$eq->getId_joueur4(),'id_joueur5'=>$eq->getId_joueur5()]);
 
         return $res;
     }
 
     public function delEquipe($id) {
-        $sql = "DELETE FROM equipes WHERE id_equipe=?";
+        $sql = "DELETE FROM equipe WHERE id_equipe=?";
         $res = $this->getRequest($sql, [$id]);
         $nb = $res->rowCount();
         return $nb;
     }
 
     public function updateEquipe(Equipes $eq) {
-            $sql = "UPDATE equipes SET nom=?,sexe=?,categorie=?,id_joueur1=?,id_joueur2=?,id_joueur3=?,id_joueur4=?,id_joueur5=? WHERE id_equipe=?";
-            $tabEquipe = [$eq->getNom(),$eq->getSexe(),$eq->getCategorie(),$eq->getId_joueur1(),$eq->getId_joueur2(),$eq->getId_joueur3(),$eq->getId_joueur4(),$eq->getId_joueur5()];
+            $sql = "UPDATE equipe SET nom=?,sexe=?,categorie=?,id_joueur1=?,id_joueur2=?,id_joueur3=?,id_joueur4=?,id_joueur5=? WHERE id_equipe=?";
+            $tabEquipe = [$eq->getNom(),$eq->getSexe(),$eq->getCategorie(),$eq->getId_joueur1(),$eq->getId_joueur2(),$eq->getId_joueur3(),$eq->getId_joueur4(),$eq->getId_joueur5(),$eq->getId_equipe()];
         
         $res = $this->getRequest($sql,$tabEquipe);
         $nb = $res->rowCount();

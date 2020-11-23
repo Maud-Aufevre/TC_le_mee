@@ -15,32 +15,25 @@ ob_start();
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nom">Nom* :</label>
-                    <input type="text" id="nom" name="nom" value="<?=$data[0]->getNom();?>" class="form-control">
+                    <input type="text" id="nom" name="nom" value="<?=stripslashes($data[0]->getNom());?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="prenom">Prénom* :</label>
-                    <input type="text" id="prenom" name="prenom" value="<?=$data[0]->getPrenom();?>" class="form-control">
+                    <input type="text" id="prenom" name="prenom" value="<?=stripslashes($data[0]->getPrenom());?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <p>Sexe* :</p>
-                    <?php if($data[0]->getSexe() == 0) { ?>
-                    <label class="radio-inline"><input type="radio" name="sexe" value="H" checked>H</label>
-                    <label class="radio-inline"><input type="radio" value="F" name="sexe">F</label>
+                    <?php if($data[0]->getSexe() == "0") { ?>
+                    <label class="radio-inline"><input type="radio" name="sexe" value="0" checked>H</label>
+                    <label class="radio-inline"><input type="radio" value="1" name="sexe">F</label>
                     <?php }else{ ?>
-                        <label class="radio-inline"><input type="radio" name="sexe" value="H" checked>H</label>
-                        <label class="radio-inline"><input type="radio" value="F" name="sexe">F</label>
+                        <label class="radio-inline"><input type="radio" name="sexe" value="0">H</label>
+                        <label class="radio-inline"><input type="radio" value="1" name="sexe" checked>F</label>
                     <?php } ?>
                 </div>
                 <div class="form-group">
                     <label for="age">Date de naissance* :</label>
                     <input type="date" id="age" name="age" value="<?=$data[0]->getDate_naissance();?>" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="photo">Photo* :</label>
-                    <div class="mb-1">
-                        <img src="./assets/images/joueurs/<?=$data[0]->getPhoto();?>" alt="photo de <?=$data[0]->getPrenom();?> <?=$data[0]->getNom();?>" width=150>
-                    </div>
-                    <input type="File" id="photo" name="photo" class="form-control">
                 </div>
                 <div class="form-group">
                 <label for="classement">Classement* :</label>

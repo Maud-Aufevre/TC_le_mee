@@ -20,6 +20,7 @@ class AdminPartenairesModel extends Driver {
             $part->setNom($row->nom);
             $part->setLogo($row->logo);
             $part->setDescription($row->description);
+            $part->setSite_web($row->site_web);
             array_push($donnees,$part);
         }
         return $donnees;
@@ -38,14 +39,15 @@ class AdminPartenairesModel extends Driver {
             $part->setNom($row->nom);
             $part->setLogo($row->logo);
             $part->setDescription($row->description);
+            $part->setSite_web($row->site_web);
             array_push($donnees,$part);
         }
         return $donnees;
     }
 
     public function addPart(Partenaires $part) {
-        $sql = "INSERT INTO partenaires(nom,logo,description) VALUES(:nom,:logo,:description)";
-        $res = $this->getRequest($sql, ['nom'=>$part->getNom(),'logo'=>$part->getLogo(),'description'=>$part->getDescription()]);
+        $sql = "INSERT INTO partenaires(nom,logo,description,site_web) VALUES(:nom,:logo,:description,:site_web)";
+        $res = $this->getRequest($sql, ['nom'=>$part->getNom(),'logo'=>$part->getLogo(),'description'=>$part->getDescription(),'site_web'=>$part->getSite_web()]);
 
         return $res;
     }
@@ -60,13 +62,13 @@ class AdminPartenairesModel extends Driver {
 
     public function updatePart(Partenaires $part) {
         if($part->getLogo() == ""){
-            $sql = "UPDATE partenaires SET nom=?,description=? WHERE id_partenaire=?";
+            $sql = "UPDATE partenaires SET nom=?,description=?,site_web=? WHERE id_partenaire=?";
 
-            $tabPart = [$part->getNom(),$part->getDescription(),$part->getId_partenaire()];
+            $tabPart = [$part->getNom(),$part->getDescription(),$part->getSite_web(),$part->getId_partenaire()];
         }else{
-            $sql = "UPDATE partenaires SET nom=?,logo=?,description=? WHERE id_partenaire=?";
+            $sql = "UPDATE partenaires SET nom=?,logo=?,description=?,site_web=? WHERE id_partenaire=?";
 
-            $tabPart = [$part->getNom(),$part->getLogo(),$part->getDescription(),$part->getId_partenaire()];
+            $tabPart = [$part->getNom(),$part->getLogo(),$part->getDescription(),$part->getSite_web(),$part->getId_partenaire()];
         }
         $res = $this->getRequest($sql,$tabPart);
         $nb = $res->rowCount();

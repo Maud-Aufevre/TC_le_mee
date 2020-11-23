@@ -11,6 +11,11 @@ ob_start();
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-4">
+            <?php
+                if(isset($error)){
+                    echo"<div class='alert alert-danger text-center'>$error</div>";
+                }
+            ?>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nom">Nom* :</label>
@@ -28,10 +33,6 @@ ob_start();
                 <div class="form-group">
                     <label for="age">Date de naissance* :</label>
                     <input type="date" id="age" name="age" placeholder="Sa date de naissance (YYYY-MM-DD)" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="photo">Photo* :</label>
-                    <input type="File" id="photo" name="photo" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="classement">Classement* :</label>

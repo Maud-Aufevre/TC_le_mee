@@ -14,7 +14,7 @@ ob_start();
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nom">Nom* :</label>
-                    <input type="text" id="nom" name="nom" value="<?=$data[0]->getNom();?>" class="form-control">
+                    <input type="text" id="nom" name="nom" value="<?=stripslashes($data[0]->getNom());?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="logo">Logo* :</label>
@@ -25,7 +25,11 @@ ob_start();
                 </div>
                 <div class="form-group">
                     <label for="des">Description* :</label>
-                    <textarea name="des" id="" cols="30" rows="10" class="form-control"><?=$data[0]->getDescription();?></textarea>
+                    <textarea name="des" id="" cols="30" rows="10" class="form-control"><?=stripslashes($data[0]->getDescription());?></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="nom">Site web (url)* :</label>
+                    <input type="text" id="site_web" name="site_web" value="<?=stripslashes($data[0]->getSite_web());?>" class="form-control">
                 </div>
                
                 <button type="submit" name="modif" class="btn btn-warning btn-block">Modifier</button>

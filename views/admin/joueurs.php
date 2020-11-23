@@ -4,7 +4,7 @@ ob_start();
 
 <h1 class="h2 text-center mb-5 mt-5">Liste des joueurs d'équipes</h1>
 <div><a href="index.php?action=add_joueur" class="btn btn-warning mb-3">Ajouter un joueur</a></div>
-<table class="table table-striped">
+<table class="table table-hover">
 <h2 class="h3 text-center mb-5 mt-5">Hommes</h2>
     <thead>
         <tr class="">
@@ -30,10 +30,10 @@ ob_start();
             F
             <?php } ?>
             </td>
-            <td><?=$data->getNom(); ?></td>
-            <td><?=$data->getPrenom(); ?></td>
+            <td><?=stripslashes($data->getNom()); ?></td>
+            <td><?=stripslashes($data->getPrenom()); ?></td>
             <td><?=$data->getDate_naissance(); ?></td>
-            <td><img src="./assets/images/joueurs/<?=$data->getPhoto(); ?>" alt="photo de <?=$data->getPrenom(); ?> <?=$data->getNom(); ?>" width=150></td>
+            <td><img src="./assets/images/joueurs/<?=$data->getPhoto(); ?>" alt="photo de <?=stripslashes($data->getPrenom()); ?> <?=stripslashes($data->getNom()); ?>" width=150></td>
             <td><?=$data->classement; ?></td>
             <td>
                 <a class="btn btn-secondary" href="index.php?action=modif_joueur&id=<?=$data->getId_joueur(); ?>"> 
@@ -55,7 +55,6 @@ ob_start();
             <th>Nom</th>
             <th>Prénom</th>
             <th>Date de naissance</th>
-            <th>Photo</th>
             <th>Classement</th>
             <th>Actions</th>
         </tr>
@@ -72,10 +71,9 @@ ob_start();
             F
             <?php } ?>
             </td>
-            <td><?=$data->getNom(); ?></td>
-            <td><?=$data->getPrenom(); ?></td>
+            <td><?=stripslashes($data->getNom()); ?></td>
+            <td><?=stripslashes($data->getPrenom()); ?></td>
             <td><?=$data->getDate_naissance(); ?></td>
-            <td><img src="./assets/images/joueurs/<?=$data->getPhoto(); ?>" alt="photo de <?=$data->getPrenom(); ?> <?=$data->getNom(); ?>" width=150></td>
             <td><?=$data->classement; ?></td>
             <td>
                 <a class="btn btn-secondary" href="index.php?action=modif_joueur&id=<?=$data->getId_joueur(); ?>"> 

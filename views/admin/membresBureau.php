@@ -4,7 +4,7 @@ ob_start();
 
 <h1 class="h2 text-center mb-5 mt-5">Liste des membres du bureau</h1>
 <div><a href="index.php?action=add_membre" class="btn btn-warning mb-3">Ajouter un membre</a></div>
-<table class="table table-striped">
+<table class="table table-hover">
     <thead>
         <tr class="">
             <th>Id</th>
@@ -19,10 +19,10 @@ ob_start();
         <?php foreach($datas as $data){ ?>
         <tr>
             <td><?=$data->getId_membre(); ?></td>
-            <td><?=$data->getNom(); ?></td>
-            <td><?=$data->getPrenom(); ?></td>
-            <td><?=$data->getFonction(); ?></td>
-            <td><img src="./assets/images/bureau/<?=$data->getPhoto(); ?>" alt="photo de <?=$data->getPrenom(); ?> <?=$data->getNom(); ?>" width=150></td>
+            <td><?=stripslashes($data->getNom()); ?></td>
+            <td><?=stripslashes($data->getPrenom()); ?></td>
+            <td><?=stripslashes($data->getFonction()); ?></td>
+            <td><img src="./assets/images/bureau/<?=$data->getPhoto(); ?>" alt="photo de <?=stripslashes($data->getPrenom()); ?> <?=stripslashes($data->getNom()); ?>" width=150></td>
             <td>
                 <a class="btn btn-secondary" href="index.php?action=modif_membre&id=<?=$data->getId_membre(); ?>"> 
                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

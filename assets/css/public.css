@@ -1,0 +1,1153 @@
+
+    @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+    @font-face {
+      src: url('../fonts/frazzle.ttf');
+      font-family: "frazzle";
+    }
+    @font-face {
+      src: url('../fonts/CFJACKSTORY-REGULAR.TTF');
+      font-family: "cfjackstory";
+    }
+    @font-face {
+      src: url('../fonts/FREESCPT.TTF');
+      font-family: "freescpt";
+    }
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  main {
+    background-color: #a1a1a1;
+    margin: 70px 0 -342px 0 ;
+    min-height: 100%;
+  }
+  main:after {
+    content: "";
+    height: 342px;
+    display: block;
+  }
+
+    /* nav haut  */
+
+  header nav {
+    position: fixed;
+    z-index: 100;
+    box-shadow: 0 5px 5px -5px #333;
+    top:0;
+    margin: 0;
+    height: 90px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  header nav>a>div {
+    position: absolute;
+    left: 25px;
+    top: 10px;
+  }
+  
+  header nav a div img {
+    width: 100px;
+  }
+  
+  header nav>ul {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-left: 150px;
+  }
+
+header nav ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-family: 'Titillium Web', sans-serif;
+  font-variant: small-caps;
+  font-size: 2em;
+}
+
+header nav ul li a {
+  color: #01010f;
+  text-decoration: none;
+}
+
+.activeMenu {
+  border-bottom: 1px solid rgb(255, 238, 0);
+}
+
+#iconResponsive {
+  display: none;
+}
+
+/* nav dropdown  */
+
+.dropdown {
+  display: none;
+}
+
+.dropdown>ul {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.dropdown>ul li {
+  font-size: 1em;
+}
+.navItem:hover>a , .dropdown>ul li a:hover {
+  color: rgb(255, 238, 0);
+  text-shadow: 1px 1px 1px black;
+}
+
+.navItem>a>i {
+  font-size: 0.5em;
+}
+
+.navItem:hover>.dropdown, .navItem>.dropdown:hover {
+  display: block;
+  position: absolute;
+  top: 60px;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 5px 5px -5px #333;
+}
+
+
+    /* carrousel  */
+
+.car {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.carrousel {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 1px 15px rgba(255, 255, 255, 0.26);
+}
+
+.titreCar {
+position: absolute;
+top: 12%;
+right: 9%;
+background-color: #01010fa1;
+border-radius: 5px;
+padding: 10px 30px 10px 10px;
+font-family: 'cfjackstory';
+font-size: 1.8em;
+letter-spacing: 2px;
+color: white;
+}
+
+    /* balles  */
+
+#vignettes {
+  display: flex;
+  flex-direction: row;
+  width: 70px;
+  margin: 10px auto;
+  justify-content: space-between;
+}
+
+.balle {
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.288);
+  border-radius: 50%;
+}
+
+
+    /* catégories  */
+
+h2 {
+  color: white;
+  margin: 90px 0 30px 0;
+  font-family: 'freescpt';
+  font-size: 3.5em;
+  line-height: 0.9em;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.cat {
+  position: relative;
+  margin: 0 60px;
+  padding: 20px;
+  font-family: 'Titillium Web', sans-serif;
+  background-color: rgba(255, 255, 255, 0.801);
+  border-radius: 8px;
+  color: #01010f;
+}
+
+
+.cat>h3 {
+  position: absolute;
+  top: 3%;
+  right: 190px;
+  margin: 0;
+  font-family: 'freescpt';
+  font-size: 2.5em;
+  font-weight: lighter;
+}
+.cat>img {
+  position: absolute;
+  top: -150px;
+  transform: translate(0, 50%);
+  right: 20px;
+  width: 150px;
+  border-radius: 50%;
+  text-align: right;
+}
+.cat>.catTxt {
+  text-align: center;
+}
+.cat>p:first-of-type {
+  padding-top: 60px;
+}
+
+.signature {
+  font-family: 'freescpt';
+  text-align: right;
+  font-size: 2em;
+  padding-top: 0;
+}
+
+.cat>div {
+  text-align: center;
+}
+
+.lien {
+  margin: 20px auto;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #01010f;
+  padding: 8px;
+  text-decoration: none;
+  color: #01010f;
+  font-family: 'freescpt';
+  font-size: 2em;
+}
+
+.lien:hover {
+  background-color:#01010f;
+  color: white;
+}
+
+    /* partenaires  */
+
+#partenaires {
+  margin: 30px 15px;
+  display: grid;
+  grid-template-columns: 18% 18% 18% 18% 18%;
+  column-gap: 2.5%;
+  row-gap: 10px;
+}
+
+.catPart {
+  background-color: white;
+}
+.catPart>h3 {
+  padding: 20px 0 15px 0;
+  margin: 0 30px;
+  font-family: 'freescpt';
+  font-size: 2.5em;
+  font-weight: lighter;
+  border-bottom: 2px dotted #a1a1a1;
+}
+.part {
+  height: 200px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.part:hover {
+  box-shadow: 1px 1px 5px #01010f;
+}
+.partLogo {
+  width: 70%;
+}
+
+.partNom>a {
+  display: none;
+}
+
+.part:hover .partNom>a {
+  display: block;
+  text-decoration: none;
+  color: #01010f;
+  font-family: 'Titillium Web', sans-serif;
+  font-variant: small-caps;
+  font-size: 1.5em;
+}
+
+#merci {
+  padding: 15px 20px 30px 0;
+  margin: 0 30px;
+  text-align: right;
+  font-family: 'freescpt';
+  font-size: 2em;
+  border-top: 2px dotted #a1a1a1;
+}
+
+    /* installations  */
+
+.divImg {
+  width: 90%;
+  margin: 30px auto;
+
+}
+.divImg>img {
+  width: 100%;
+  border: 3px solid white;
+}
+
+.presInstall {
+  width: 90%;
+  text-align: center;
+  margin: auto;
+}
+.presInstall>h3 {
+  text-align: right;
+  color: white;
+  margin: 30px 0;
+  font-family: 'freescpt';
+  font-size: 2.5em;
+  font-weight: lighter;
+}
+.presInstall>p {
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+  color: white;
+  font-size: 1.2em;
+  font-weight: lighter;
+}
+
+.imgBig[src="./assets/images/installations/installations-3.jpg"], .imgBig[src="./assets/images/installations/installations-1.jpg"], .imgBig[src="./assets/images/installations/installations-club-house.jpg"], .imgBig[src~="./assets/images/actus/"] {
+  width: 60%;
+}
+.imgBig[src="./assets/images/installations/installations-club-house-2.jpg"], .imgBig[src="./assets/images/installations/installations-mini-tennis.jpg"], .imgBig[src="./assets/images/installations/installations-salle-musculation.jpg"], .imgBig[src="./assets/images/installations/parking.jpg"] {
+  width: 27%;
+}
+.imgBig {
+  box-shadow: 3px 3px 4px #333;
+}
+
+.imgBloc {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+}
+.imgBloc div, .imgBloc>img {
+  margin: 15px auto;
+}
+
+
+    /* bureau  */
+
+#bureau {
+  width: 85%;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  align-items: stretch;
+  row-gap: 30px;
+  align-items: center;
+}
+
+.membre {
+  margin: auto;
+  text-align: center;
+}
+
+.membre>img {
+  width: 180px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.nomMembre {
+  font-family: 'freescpt';
+  color: white;
+  font-size: 2.3em;
+  margin: 10px 0 0 0;
+}
+
+.fonctionMembre {
+  font-family: 'Titillium Web', sans-serif;
+  color: #01010f;
+  font-variant: small-caps;
+  font-size: 2.3em;
+  margin: 0;
+}
+
+    /* équipe péda  */
+
+#peda {
+  width: 70%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 45% 45%;
+  column-gap: 10%;
+  row-gap: 30px;
+}
+
+.enseignant {
+  margin: auto;
+  text-align: center;
+}
+
+.enseignant>img {
+  width: 80%;
+  border: 2px solid white;
+}
+
+
+    /* actus  */
+
+    .boutonRetour {
+      margin-top: 50px;
+      width: 90%;
+      text-align: right;
+    }
+
+    .retour {
+      background-color:  #a1a1a1;
+      border: 1px solid  white;
+      border-radius: 5px;
+      padding: 8px;
+      text-decoration: none;
+      color: white;
+      font-family: 'freescpt';
+      font-size: 1.5em;
+    }
+    .retour:hover {
+      background-color: white;
+      border: none;
+      color: #a1a1a1;
+    }
+
+    #actus {
+      text-align: center;
+      margin: 70px auto;
+    }
+
+    .actualite {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 75%;
+      margin: 30px auto;
+      border-top: 1px solid white;
+    }
+
+    .imgActualite {
+      width: 60%;
+      margin: auto;
+    }
+
+    .actualite>h3 {
+      font-family: 'freescpt';
+      font-size: 2.5em;
+      font-weight: lighter;
+
+    }
+    .actualite img {
+      box-shadow: 3px 3px 4px #333;
+    }
+
+    .date_actu, .txtActu {
+      font-family: 'Titillium Web', sans-serif;
+    }
+
+    .catActu {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      margin: auto;
+      width: 90px;
+    }
+
+    .imgActu {
+      text-align: center;
+    }
+    
+    .imgActu>img {
+      width: 50%;
+      height: auto;
+      margin: 50px auto;
+    }
+
+    .partage {
+      margin: 30px auto;
+    }
+
+    .partage a>img {
+      width: 30px;
+      box-shadow: none;
+    }
+    .partage>p {
+      font-family: 'Titillium Web', sans-serif;
+      color: white;
+    }
+
+    /* adhésions  */
+
+#ad {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  column-gap: 4%;
+  row-gap: 30px;
+}
+
+.adhesion {
+  background-color: rgba(255, 255, 255, 0.801);
+  box-shadow: 3px 3px 4px #333;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.nomAdh {
+  font-family: 'freescpt';
+  font-size: 2.5em;
+}
+
+.programme {
+  font-family: 'Titillium Web', sans-serif;
+  text-align: justify;
+  padding: 0 15px;
+}
+.adhesion ul li{
+  font-family: 'Titillium Web', sans-serif;
+  text-align: left;
+  padding: 0 15px;
+  font-size: 0.8em;
+}
+
+.prix {
+  width: 100px;
+  margin: 20px auto;
+  font-family: 'freescpt';
+  color: rgb(255, 238, 0);
+  text-shadow: 1px 1px 1px black;
+  font-size: 2.8em;
+  background-color: white;
+  border-radius: 50px/30px;
+  padding: 2px 5px;
+}
+
+
+    /* contact  */
+
+.error {
+  background-color: rgb(255, 204, 204);
+  font-family: 'Titillium Web', sans-serif;
+  width: 75%;
+  margin: auto;
+  border-radius: 5px;
+  color:  #01010f;
+  height: auto;
+  padding: 20px 10px;
+  border: 1px solid red;
+}
+.succes {
+  background-color: rgb(177, 255, 177);
+  font-family: 'Titillium Web', sans-serif;
+  width: 75%;
+  margin: auto;
+  border-radius: 5px;
+  color:  #01010f;
+  height: auto;
+  padding: 20px 10px;
+  border: 1px solid green;
+}
+
+#formulaire {
+  width: 75%;
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Titillium Web', sans-serif;
+} 
+
+#formulaire h3 {
+  font-variant: small-caps;
+  font-size: 1.2em;
+  font-weight: normal;
+  color: white; 
+}
+#formulaire p {
+  font-size: 1.3em;
+}
+#formulaire p a {
+  text-decoration: none;
+  color: #01010f;
+}
+
+label {
+  display: inline-block;
+  width: 30%;
+  text-align: left;
+  margin: 0 auto 10px auto;
+  padding-left: -5px;
+  font-variant: small-caps;
+  font-size: 1.2em;
+}
+
+input, textarea {
+  display: inline-block;
+  width: 30%;
+  border: none;
+  margin-bottom: 20px;
+  margin: 0 auto 10px auto;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+input {
+  height: 23px;
+}
+
+.champs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+    /* footer  */
+
+footer {
+  margin-top: 50px;
+  width: 100%;
+  height: 342px;
+  background-color: white;
+  box-shadow: 0 -5px 5px -5px #333;
+  z-index: 90;
+}
+
+#footer {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  text-align: center;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  padding-top: 60px;
+}
+
+footer div>a>img {
+  width: 160px;
+  margin-bottom: 0;
+}
+
+.reseaux {
+  width: 60px;
+  margin-top: 5px;
+}
+
+#mentions {
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto 0 auto;
+  border-top: 1px solid #01010f;
+  width: 80%;
+}
+
+#mentions p, #footer div p {
+  margin: auto;
+  color: #01010f;
+  font-family: 'Titillium Web', sans-serif;
+}
+#mentions p:first-of-type {
+  margin-top: 15px;
+}
+#mentions p:last-of-type {
+  margin-bottom: 15px;
+}
+
+h4 {
+  font-family: 'freescpt';
+  font-size: 2.5em;
+  margin: 0;
+  font-weight: normal;
+}
+
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+@media screen and (max-width:1250px) {
+
+        /* nav haut  */
+      
+    header nav ul li {
+      font-size: 1.3em;
+    }
+
+}
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+@media screen and (max-width:910px) {
+
+
+
+        /* nav haut  */
+
+  
+  header nav>a>div {
+    z-index: 110;
+  }
+
+  header nav {
+    height: 80px;
+  }
+  
+  header nav a div img {
+    width: 60px;
+  }
+  
+  header nav>ul {
+    position: fixed;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    margin: 30px 0 0 0;
+    padding: 50px 0;
+  }
+
+header nav ul li {
+  display: flex;
+  align-self: stretch;
+  width: 100%;
+  font-size: 1.3em;
+}
+
+
+
+#iconResponsive {
+  display: block;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  margin: 0;
+  text-align: right;
+}
+#iconResponsive a {
+  text-decoration: none;
+}
+
+#barres {
+  display: inline-block;
+}
+#croix {
+  display: none;
+}
+
+.fa {
+ color: black;
+}
+
+/* nav dropdown  */
+
+.dropdown {
+  display: none;
+}
+
+.dropdown>ul {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.dropdown>ul li {
+  font-size: 1em;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.navItem:hover>.dropdown, .navItem>.dropdown:hover {
+  display: block;
+  position: static;
+  top: 80px;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 5px 5px -5px #333;
+}
+
+
+    /* carrousel  */
+    
+    
+    .titreCar {
+    top: 8%;
+    right: 0;
+    padding: 3px 17px 3px 8px;
+    border-radius: 5px 0 0 5px;
+    font-size: 0.7em;
+    }
+    
+        /* balles  */
+    
+    #vignettes {
+      width: 40px;
+      margin: 5px auto;
+    }
+    
+    .balle {
+      width: 8px;
+      height: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.288);
+      border-radius: 50%;
+    }
+
+
+    /* catégories  */
+
+    h2 {
+      color: white;
+      margin: 50px 5px 30px 5px;
+      font-family: 'freescpt';
+      font-size: 2em;
+      line-height: 0.9em;
+      text-align: center;
+      font-weight: lighter;
+    }
+    
+    .cat {
+      position: relative;
+      margin: 0 10px;
+      padding: 10px;
+      font-family: 'Titillium Web', sans-serif;
+      background-color: rgba(255, 255, 255, 0.801);
+      border-radius: 8px;
+      color: #01010f;
+      font-size: 0.8em;
+    }
+    
+    
+    .cat>h3 {
+      position: static;
+      /* top: 3%;
+      right: 90px; */
+      text-align: center;
+      margin: 30px 0 0 0;
+      font-family: 'freescpt';
+      font-size: 2em;
+      font-weight: lighter;
+    }
+    .cat img {
+      /* position: absolute; */
+      top: -80px;
+      right: 15px;
+      width: 80px;
+    }
+    .cat>p:first-of-type {
+      padding-top: 10px;
+    }
+  
+    
+    .cat>div {
+      text-align: center;
+    }
+
+    .btn {
+      margin: 25px auto 15px auto;
+    }
+    
+    .lien {
+      font-size: 1.6em;
+      padding: 3px;
+    }
+    
+    
+        /* partenaires  */
+    
+    #partenaires {
+      grid-template-columns: 48% 48%;
+      column-gap: 4%;
+    }
+    
+    .catPart>h3 {
+      font-size: 1.6em;
+      border-bottom: 1px dotted #a1a1a1;
+    }
+    .part {
+      height: auto;
+      box-shadow: 1px 1px 5px #a1a1a1;
+    }
+    .partLogo {
+      width: 60%;
+      padding-top: 20px;
+    }
+    
+    .partNom>a {
+      display: block;
+      text-decoration: none;
+      color: #01010f;
+      font-family: 'Titillium Web', sans-serif;
+      font-variant: small-caps;
+      font-size: 0.9em;
+    }
+    
+    #merci {
+      padding: 5px 10px 10px 0;
+      margin: 0 30px;
+      font-size: 1.5em;
+      border-top: 1px dotted #a1a1a1;
+    }
+    
+        /* installations  */
+    
+    .divImg {
+      width: 95%;
+      margin: 30px auto;   
+    }
+    
+    .presInstall {
+      width: 95%;
+    }
+    .presInstall>h3 {
+      margin: 20px 0;
+      font-size: 1.9em;
+    }
+
+    .presInstall>p {
+      font-size: 0.9em;
+    }
+    
+    .imgBig[src="./assets/images/installations/installations-3.jpg"], .imgBig[src="./assets/images/installations/installations-1.jpg"], .imgBig[src="./assets/images/installations/installations-club-house.jpg"], .imgBig[src~="./assets/images/actus/"] {
+      width: 75%;
+    }
+    .imgBig[src="./assets/images/installations/installations-club-house-2.jpg"], .imgBig[src="./assets/images/installations/installations-mini-tennis.jpg"], .imgBig[src="./assets/images/installations/installations-salle-musculation.jpg"], .imgBig[src="./assets/images/installations/parking.jpg"] {
+      width: 36%;
+    }
+    
+    .imgBloc {
+      display: flex;
+      flex-direction: column;
+      margin: 20px auto;
+    }
+    .imgBloc div img:nth-of-type(odd) {
+      width: 25px;
+    }
+    .imgBloc div img:nth-of-type(even) {
+      height: 25px;
+    }
+    
+    
+        /* bureau  */
+    
+    #bureau {
+      margin: 30px auto;
+      grid-template-columns: 50% 50%;
+      row-gap: 30px;
+    }
+    
+    .membre>img {
+      width: 120px;
+    }
+    
+    .nomMembre {
+      font-size: 1.6em;
+    }
+    
+    .fonctionMembre {
+      font-size: 1.1rem;
+      line-height: 1em;
+    }
+    
+        /* équipe péda  */
+    
+    #peda {
+      width: 90%;
+      grid-template-columns: 48% 48%;
+      column-gap: 4%;
+
+    }
+    
+    .enseignant>img {
+      width: 80%;
+    }
+    
+    
+        /* actus  */
+
+    
+        .retour {
+          padding: 5px;
+        }
+    
+        .actualite {
+          width: 85%;
+        }
+
+        .imgActualite {
+          margin: auto;
+          width: 75%;
+        }
+    
+        .actualite>h3 {
+          font-size: 2em;   
+        }
+    
+        .date_actu, .txtActu {
+          font-size: 0.8em;
+        }
+    
+        .catActu {
+          width: 85px;
+        }
+        
+        .imgActu>img {
+          width: 50%;
+          margin: 50px auto;
+        }
+    
+    
+        /* adhésions  */
+
+    #ad {
+      width: 70%;
+      grid-template-columns: 100%;
+    }
+
+    .nomAdh {
+      font-size: 2em;
+    }
+    
+    .programme {
+      font-size: 0.8em;
+    }
+    
+    .prix {
+      width: 75px;
+      margin: 15px auto;
+      font-size: 2em;
+    }
+    
+    
+        /* contact  */
+    
+    .error, .succes {
+      font-size: 0.8em;
+      padding: 10px 5px;
+    }
+    #formulaire {
+      width: 90%;
+    } 
+    
+    #formulaire h3 {
+      font-size: 1em;
+    }
+    #formulaire p {
+      font-size: 1em;
+    }
+    
+    label, input, textarea {
+      width: 80%;
+    }
+
+    /* footer  */
+
+    footer {
+      margin-top: 30px;
+    }
+    
+    #footer {
+      grid-template-columns: 100%;
+      padding-top: 5px;
+    }
+    
+    footer div:nth-of-type(2)>a>img {
+      display: none;
+    }
+    
+    .reseaux {
+      width: 40px;
+    }
+    
+    #mentions {
+      font-size: 0.7em;
+    }
+    
+    #mentions p, #footer div p {
+      font-size: 0.8em;
+    }
+    
+    h4 {
+      font-size: 1.8em;
+    }
+    h4:last-of-type {
+      margin-top: 20px;
+    }
+
+}
+
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+@media screen and (max-width:450px) {
+
+        /* bureau  */
+
+    #bureau {
+      grid-template-columns: 100%;
+    }
+
+
+        /* équipe péda  */
+    
+    #peda {
+      width: 80%;
+      grid-template-columns: 100%;
+
+    }
+    
+    .enseignant>img {
+      width: 60%;
+    }
+
+
+      /* adhésions  */
+      
+    .prix {
+      width: 60px;
+      margin: 15px auto;
+      font-size: 2em;
+    }
+}

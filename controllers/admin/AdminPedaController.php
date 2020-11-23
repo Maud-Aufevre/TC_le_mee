@@ -10,36 +10,46 @@ class AdminPedaController {
     }
 
     public function listEns() {
+        AuthController::islogged();
+
         $datas = $this->driver->getPeda();
         require_once('./views/admin/enseignants.php');
     }
 
     public function insertEns() {
+        AuthController::islogged();
+
         if(isset($_POST['ajout'])) {
-            $nom = trim(htmlentities(addslashes($_POST['nom'])));
-            $prenom = trim(htmlentities(addslashes($_POST['prenom'])));
-            $fonction = trim(htmlentities(addslashes($_POST['fonction'])));
-            $photo = $_FILES['photo']['name'];
-            $destination = './assets/images/enseignants/';
-            move_uploaded_file($_FILES['photo']['tmp_name'],$destination.$photo);
+            if(empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['fonction']) || empty($_FILES['photo'])) {
+                $error = "Vous devez remplir tous les champs";
+            }else {
+                $nom = trim(htmlentities(addslashes($_POST['nom'])));
+                $prenom = trim(htmlentities(addslashes($_POST['prenom'])));
+                $fonction = trim(htmlentities(addslashes($_POST['fonction'])));
+                $photo = $_FILES['photo']['name'];
+                $destination = './assets/images/enseignants/';
+                move_uploaded_file($_FILES['photo']['tmp_name'],$destination.$photo);
 
-            $new = new Peda();
-            $new->setNom($nom);
-            $new->setPrenom($prenom);
-            $new->setFonction($fonction);
-            $new->setPhoto($photo);
-            $res = $this->driver->addEns($new);
+                $new = new Peda();
+                $new->setNom($nom);
+                $new->setPrenom($prenom);
+                $new->setFonction($fonction);
+                $new->setPhoto($photo);
+                $res = $this->driver->addEns($new);
 
-            if($res){
-                header('location:index.php?action=ens_equipe');
-            }else{
-                echo "Echec lors de l'ajout";
+                if($res){
+                    header('location:index.php?action=ens_equipe');
+                }else{
+                    $error = "Echec lors de l'ajout";
+                }
             }
         }
         require_once('./views/admin/formInsertEns.php');
     }
 
     public function removeEns() {
+        AuthController::islogged();
+
         if(isset($_GET['id']) && isset($_GET['photo'])) {
             $photo = $_GET['photo'];
             $id = (int)$_GET['id'];
@@ -53,7 +63,8 @@ class AdminPedaController {
     }
 
     public function ModifEns() {
-
+        AuthController::islogged();
+        
         if(isset($_GET['id'])){
             $id = (int)$_GET['id'];
             $data = $this->driver->getEns($id);

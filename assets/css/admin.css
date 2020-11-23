@@ -88,3 +88,51 @@
         }
 
 
+
+
+
+
+
+    /* carrousel */
+
+.carrousel {
+  position: relative;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.carrouselImg {
+  width: 90%;
+  box-shadow: 3px 3px 20px rgb(36, 36, 36);
+}
+
+.carrouselTitre {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  padding: 10px 20px;
+  border-radius: 5px 0 0 5px;
+  color:rgb(36, 36, 36);
+  background-color: rgba(255, 255, 255, 0.514);
+  
+}
+
+
+
+/* messages */
+
+.visi:not(:visited)>i{
+  color: black;
+}
+
+.visi:visited>i{
+  color: rgb(239, 255, 15);
+}
+
+.visi:not(:visited){
+  background-color:rgb(239, 255, 15);
+}
+
+.visi:visited{
+  background-color: black;
+}

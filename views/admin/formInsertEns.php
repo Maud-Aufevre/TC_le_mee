@@ -11,6 +11,11 @@ ob_start();
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-4">
+            <?php
+                if(isset($error)){
+                    echo"<div class='alert alert-danger text-center'>$error</div>";
+                }
+            ?>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nom">Nom :</label>

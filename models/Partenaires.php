@@ -5,6 +5,7 @@ class Partenaires {
     private $nom;
     private $logo;
     private $description;
+    private $site_web;
 
     /**
      * Get the value of id_partenaire
@@ -82,6 +83,26 @@ class Partenaires {
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of site_web
+     */ 
+    public function getSite_web()
+    {
+        return $this->site_web;
+    }
+
+    /**
+     * Set the value of site_web
+     *
+     * @return  self
+     */ 
+    public function setSite_web($site_web)
+    {
+        $this->site_web = $site_web;
 
         return $this;
     }

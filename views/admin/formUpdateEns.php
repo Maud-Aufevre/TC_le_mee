@@ -15,15 +15,15 @@ ob_start();
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nom">Nom* :</label>
-                    <input type="text" id="nom" name="nom" value="<?=$data[0]->getNom();?>" class="form-control">
+                    <input type="text" id="nom" name="nom" value="<?=stripslashes($data[0]->getNom());?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="prenom">Prénom* :</label>
-                    <input type="text" id="prenom" name="prenom" value="<?=$data[0]->getPrenom();?>" class="form-control">
+                    <input type="text" id="prenom" name="prenom" value="<?=stripslashes($data[0]->getPrenom());?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="fonction">Fonction* :</label>
-                    <input type="text" id="fonction" name="fonction" value="<?=$data[0]->getFonction();?>" class="form-control">
+                    <input type="text" id="fonction" name="fonction" value="<?=stripslashes($data[0]->getFonction());?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="photo">Photo* :</label>

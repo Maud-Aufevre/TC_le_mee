@@ -10,34 +10,38 @@ class AdminJoueursController {
     }
 
     public function listJoueurs() {
+        AuthController::islogged();
+
         $datas = $this->driver->getJoueurs();
         require_once('./views/admin/joueurs.php');
     }
 
     public function insertJoueur() {
-        if(isset($_POST['ajout'])) {
-            $sexe = $_POST['sexe'];
-            $nom = trim(htmlentities(addslashes($_POST['nom'])));
-            $prenom = trim(htmlentities(addslashes($_POST['prenom'])));
-            $date_naissance = trim(htmlentities(addslashes($_POST['age'])));
-            $photo = $_FILES['photo']['name'];
-            $destination = './assets/images/joueurs/';
-            move_uploaded_file($_FILES['photo']['tmp_name'],$destination.$photo);
-            $id_classement = $_POST['classement'];
-            
-            $new = new Joueurs();
-            $new->setSexe($sexe);
-            $new->setNom($nom);
-            $new->setPrenom($prenom);
-            $new->setDate_naissance($date_naissance);
-            $new->setPhoto($photo);
-            $new->setId_classement($id_classement);
-            $res = $this->driver->addJoueur($new);
+        AuthController::islogged();
 
-            if($res) {
-                header('location:index.php?action=comp_joueurs');
+        if(isset($_POST['ajout'])) {
+            if(empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['age']) || empty($_POST['id_categorie'])) {
+                $error = "Vous devez remplir tous les champs";
             }else {
-                echo "Echec lors de l'ajout";
+                $sexe = $_POST['sexe'];
+                $nom = trim(htmlentities(addslashes($_POST['nom'])));
+                $prenom = trim(htmlentities(addslashes($_POST['prenom'])));
+                $date_naissance = trim(htmlentities(addslashes($_POST['age'])));
+                $id_classement = $_POST['classement'];
+                
+                $new = new Joueurs();
+                $new->setSexe($sexe);
+                $new->setNom($nom);
+                $new->setPrenom($prenom);
+                $new->setDate_naissance($date_naissance);
+                $new->setId_classement($id_classement);
+                $res = $this->driver->addJoueur($new);
+
+                if($res) {
+                    header('location:index.php?action=comp_joueurs');
+                }else {
+                    $error = "Echec lors de l'ajout";
+                }
             }
         }
         // var_dump($this->driver->getClassements()); die;
@@ -46,38 +50,37 @@ class AdminJoueursController {
     }
 
     public function removeJoueur() {
-        if(isset($_GET['id']) && isset($_GET['photo'])) {
-            $photo = $_GET['photo'];
+        AuthController::islogged();
+
+        if(isset($_GET['id'])) {
             $id = $_GET['id'];
             $nb = $this->driver->delJoueur($id);
 
             if($nb) {
-                $fichier = './assets/images/joueurs/'.$photo;
-                unlink($fichier);
                 header('location:index.php?action=comp_joueurs');
             }
         }
     }
 
     public function modifJoueur() {
+        AuthController::islogged();
+
         if(isset($_GET['id'])){
-            $id = (int)$_GET['id'];
+            $id = $_GET['id'];
             $data = $this->driver->getJoueur($id);
 
             if(isset($_POST['modif'])){
                 // var_dump($_POST); die;
                 $nom = trim(htmlentities(addslashes($_POST['nom'])));
                 $prenom = trim(htmlentities(addslashes($_POST['prenom'])));
+                $sexe = $_POST['sexe'];
                 $date_naissance = trim(htmlentities(addslashes($_POST['age'])));
-                $photo = $_FILES['photo']['name'];
-                $destination = './assets/images/joueurs/';
-                move_uploaded_file($_FILES['photo']['tmp_name'],$destination.$photo);
                 $id_classement = $_POST['classement'];
 
                 $data[0]->setNom($nom);
                 $data[0]->setPrenom($prenom);
+                $data[0]->setSexe($sexe);
                 $data[0]->setDate_naissance($date_naissance);
-                $data[0]->setPhoto($photo);
                 $data[0]->setId_classement($id_classement);
 
                 $nb = $this->driver->updateJoueur($data[0]);
@@ -98,7 +101,10 @@ class AdminJoueursController {
     //EQUIPES:
 
     public function listEquipes() {
+        AuthController::islogged();
+
         $datas = $this->driver->getEq();
+        // var_dump($datas); die;
         if($_GET['action'] == 'comp_jeunes'){
             require_once('./views/admin/eqJeunes.php');
         }else{
@@ -107,40 +113,41 @@ class AdminJoueursController {
     }
 
     public function insertEquipe() {
-        if(isset($_POST['ajout'])) {
-            $nom = trim(htmlentities(addslashes($_POST['nom'])));
-            if($_POST['sexe']=="H"){
-                $sexe = 0;
-            }else{
-                $sexe = 1;
-            }
-            // var_dump($_POST); die;
-            $categorie = $_POST['categorie'];
-            $id_joueur1 = $_POST['j1'];
-            $id_joueur2 = $_POST['j2'];
-            $id_joueur3 = $_POST['j3'];
-            $id_joueur4 = $_POST['j4'];
-            $id_joueur5 = $_POST['j5'];
-            
-            $new = new Equipes();
-            $new->setNom($nom);
-            $new->setSexe($sexe);
-            $new->setCategorie($categorie);
-            $new->setId_joueur1($id_joueur1);
-            $new->setId_joueur2($id_joueur2);
-            $new->setId_joueur3($id_joueur3);
-            $new->setId_joueur4($id_joueur4);
-            $new->setId_joueur5($id_joueur5);
-            $res = $this->driver->addEquipe($new);
+        AuthController::islogged();
 
-            if($res) {
-                if($_GET['action']=='add_eq_jeunes'){
-                    header('location:index.php?action=comp_jeunes');
-                }else{
-                    header('location:index.php?action=comp_adultes');
-                }
+        if(isset($_POST['ajout'])) {
+            if(empty($_POST['nom']) || empty($_POST['categorie']) || empty($_POST['j1']) || empty($_POST['j2'])) {
+                $error = "Vous devez remplir tous les champs";
             }else {
-                echo "Echec lors de l'ajout";
+                $nom = trim(htmlentities(addslashes($_POST['nom'])));
+                $sexe = $_POST['sexe'];
+                $categorie = $_POST['categorie'];
+                $id_joueur1 = $_POST['j1'];
+                $id_joueur2 = $_POST['j2'];
+                $id_joueur3 = $_POST['j3'];
+                $id_joueur4 = $_POST['j4'];
+                $id_joueur5 = $_POST['j5'];
+                
+                $new = new Equipes();
+                $new->setNom($nom);
+                $new->setSexe($sexe);
+                $new->setCategorie($categorie);
+                $new->setId_joueur1($id_joueur1);
+                $new->setId_joueur2($id_joueur2);
+                $new->setId_joueur3($id_joueur3);
+                $new->setId_joueur4($id_joueur4);
+                $new->setId_joueur5($id_joueur5);
+                $res = $this->driver->addEquipe($new);
+
+                if($res) {
+                    if($_GET['action']=='add_eq_jeunes'){
+                        header('location:index.php?action=comp_jeunes');
+                    }else{
+                        header('location:index.php?action=comp_adultes');
+                    }
+                }else {
+                    $error = "Echec lors de l'ajout";
+                }
             }
         }
         // var_dump($this->driver->getJoueurs()); die;
@@ -152,6 +159,8 @@ class AdminJoueursController {
     }
 
     public function removeEquipe() {
+        AuthController::islogged();
+
         if(isset($_GET['id'])) {
             $id = $_GET['id'];
             $nb = $this->driver->delEquipe($id);
@@ -169,11 +178,14 @@ class AdminJoueursController {
     }
 
     public function modifEquipe() {
+        AuthController::islogged();
+        
         if(isset($_GET['id'])){
-            $id = (int)$_GET['id'];
+            $id = $_GET['id'];
             $data = $this->driver->getEq($id);
 
             if(isset($_POST['modif'])){
+                // var_dump($_POST); die;
                 $nom = trim(htmlentities(addslashes($_POST['nom'])));
                 $sexe = $_POST['sexe'];
                 $categorie = $_POST['categorie'];

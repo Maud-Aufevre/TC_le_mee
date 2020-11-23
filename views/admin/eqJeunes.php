@@ -4,7 +4,7 @@ ob_start();
 
 <h1 class="h2 text-center mb-5 mt-5">Liste des équipes jeunes</h1>
 <div><a href="index.php?action=add_eq_jeunes" class="btn btn-warning mb-3">Ajouter une équipe</a></div>
-<table class="table table-striped">
+<table class="table table-hover">
     <thead>
         <tr class="">
             <th>Id</th>
@@ -23,7 +23,7 @@ ob_start();
         <?php foreach($datas as $data){ ?>
         <tr>
             <td><?=$data->getId_equipe(); ?></td>
-            <td><?=$data->getNom(); ?></td>
+            <td><?=stripslashes($data->getNom()); ?></td>
             <td>
                 <?php if($data->getSexe() == 0){ ?>
                 H
@@ -32,20 +32,80 @@ ob_start();
                 <?php } ?>
             </td>
             <td><?=$data->getCategorie(); ?></td>
-            <td><?=$data->nom1; ?></td>
-            <td><?=$data->nom2; ?></td>
+            <td>
+                <a href="#ex1" rel="modal:open" class="text-dark">
+                    <?=$data->nom1; ?>
+                </a>
+
+                <!-- modal -->
+                <div id="ex1" class="modal w-50 h-auto offset-3 mt-4 bg-white rounded">
+                    <p class="display-4 text-center"><?=$data->prenom1;?> <?=$data->nom1;?></p>
+                    <p class="h4 text-center"><?=$data->classement1;?></p>
+                    <a href="#" rel="modal:close" class="btn btn-secondary">Fermer</a>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a href="#ex2" rel="modal:open" class="text-dark">
+                    <?=$data->nom2; ?>
+                </a>
+
+                <!-- modal -->
+                <div id="ex2" class="modal">
+                    <p class="display-4 text-center"><?=$data->prenom2;?> <?=$data->nom2;?></p>
+                    <p class="h4 text-center"><?=$data->classement2;?></p>
+                    <a href="#" rel="modal:close" class="btn btn-secondary ">Fermer</a>
+                    </div>
+                </div>
+            </td>
             <?php if(isset($id_joueur3)){ ?>
-            <td><?=$data->nom3; ?></td>
+            <td>
+                <a href="#ex3" rel="modal:open" class="text-dark">
+                    <?=$data->nom3; ?>
+                </a>
+
+                <!-- modal -->
+                <div id="ex3" class="modal">
+                    <p class="display-4 text-center"><?=$data->prenom3;?> <?=$data->nom3;?></p>
+                    <p class="h4 text-center"><?=$data->classement3;?></p>
+                    <a href="#" rel="modal:close" class="btn btn-secondary ">Fermer</a>
+                    </div>
+                </div>
+            </td>
             <?php }else{ ?>
                 <td>Pas de joueur 3</td>
             <?php } ?>   
             <?php if(isset($id_joueur4)){ ?>
-            <td><?=$data->nom4; ?></td>
+            <td>
+                <a href="#ex4" rel="modal:open" class="text-dark">
+                    <?=$data->nom4; ?>
+                </a>
+
+                <!-- modal -->
+                <div id="ex4" class="modal">
+                    <p class="display-4 text-center"><?=$data->prenom4;?> <?=$data->nom4;?></p>
+                    <p class="h4 text-center"><?=$data->classement4;?></p>
+                    <a href="#" rel="modal:close" class="btn btn-secondary ">Fermer</a>
+                    </div>
+                </div>
+            </td>
             <?php }else{ ?>
                 <td>Pas de joueur 4</td>
             <?php } ?> 
             <?php if(isset($id_joueur5)){ ?>
-            <td><?=$data->nom5; ?></td>
+            <td>
+                <a href="#ex5" rel="modal:open" class="text-dark">
+                    <?=$data->nom5; ?>
+                </a>
+
+                <!-- modal -->
+                <div id="ex5" class="modal">
+                    <p class="display-4 text-center"><?=$data->prenom5;?> <?=$data->nom5;?></p>
+                    <p class="h4 text-center"><?=$data->classement5;?></p>
+                    <a href="#" rel="modal:close" class="btn btn-secondary ">Fermer</a>
+                    </div>
+                </div>
+            </td>
             <?php }else{ ?>
                 <td>Pas de joueur 5</td>
             <?php } ?> 

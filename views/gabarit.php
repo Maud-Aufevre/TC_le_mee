@@ -93,6 +93,7 @@
       <div id="mentions">
         <p>Réalisé par Maud Aufèvre</p>
         <p>Copyright &copy; 2020 - Tous droits réservés</p>
+        <p><a href="#">Mentions légales</a></p>
       </div>
     </footer>
 

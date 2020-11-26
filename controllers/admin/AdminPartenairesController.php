@@ -20,7 +20,8 @@ class AdminPartenairesController {
         AuthController::islogged();
 
         if(isset($_POST['ajout'])) {
-            if(empty($_POST['nom']) || empty($_POST['description']) || empty($_FILES['logo']) || empty($_POST['site_web'])) {
+            // var_dump($_POST); var_dump($_FILES); die;
+            if(empty($_POST['nom']) || empty($_POST['des']) || empty($_FILES['logo']) || empty($_POST['site_web'])) {
                 $error = "Vous devez remplir tous les champs";
             }else {
                 $nom = trim(htmlentities(addslashes($_POST['nom'])));

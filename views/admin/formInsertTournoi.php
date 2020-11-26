@@ -1,15 +1,12 @@
 <?php
 ob_start();
 ?>
-
 <h1 class="h2 text-center mb-5 mt-5">
         Ajout d'un tournoi
 </h1>
-
 <div class="text-right">
         <a href="./index.php?action=tournois" class="btn btn-secondary mr-5">Retour</a>
 </div>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-4">
@@ -74,7 +71,6 @@ ob_start();
         </div>
     </div>
 </div>
-
 <?php
 $content = ob_get_clean();
 require_once('./views/template.php');

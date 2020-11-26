@@ -31,11 +31,9 @@ class AdminActusModel extends Driver {
             $actu->setIllu2($row->illu2);
             $actu->setId_categorie($row->id_categorie);
             $actu->nom = $this->getCategorie($row->id_categorie)->getNom();
-            // $actu->visuel = $this->getCategorie($row->id_categorie)->getVisuel();
 
             array_push($donnees,$actu);
         }
-        // var_dump($donnees); die;
         return $donnees;
     }
 

@@ -147,7 +147,7 @@ class PublicController{
 
 
                     // envoi en parallèle d'un mail avec le contenu du message :
-                    $destinataires = "fabien.dasilva@fft.fr";
+                    $destinataires = "maud.aufevre@gmail.com";
                     $sujet = "Nouveau message reçu via site du club";
                     
                     // en-têtes expéditeur
@@ -160,9 +160,12 @@ class PublicController{
                     // $entetes .= "Cc : fabien.dasilva@fft.fr\n";
                     
                     // type de contenu et encodage
-                    // $entetes3 = "Content-type: text/plain; charset=utf-8";
+                    $entetes3 = "Content-type: text/plain; charset=utf-8";
+
+                    $entetes = $entetes1."\r\n".$entetes2."\r\n".$entetes3."\r\n";
+                    $contenu = "Message de : {$prenomMail} {$nomMail}\nSes coordonnées : \n Tel : {$telMail}\n Email : {$emailMail}\nSon message : {$messageMail}";
                     
-                    mail($destinataires, $sujet, "Message de : {$prenomMail} {$nomMail}\nSes coordonnées : \n Tel : {$telMail}\n Email : {$emailMail}\nSon message : {$messageMail}", [$entetes1,$entetes2]);
+                    mail($destinataires, $sujet, $contenu,$entetes);
                 }else{
                     $error = "Echec, le message n'a pas abouti";
                 }

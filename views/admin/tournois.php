@@ -1,10 +1,8 @@
 <?php
 ob_start();
 ?>
-
 <h1 class="h2 text-center mb-5 mt-5">Liste des tournois du club</h1>
 <div><a href="index.php?action=add_tournoi" class="btn btn-warning mb-3">Ajouter un tournoi</a></div>
-
 <table class="table table-hover">
     <tbody>
         <?php foreach($datas as $data){ ?>
@@ -75,8 +73,6 @@ ob_start();
         <?php } ?>
     </tbody>
 </table>
-
-
 <?php 
 define('ROOT',dirname(__DIR__));
 $content = ob_get_clean();

@@ -1,9 +1,6 @@
 
     @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
-    @font-face {
-      src: url('../fonts/frazzle.ttf');
-      font-family: "frazzle";
-    }
+
     @font-face {
       src: url('../fonts/CFJACKSTORY-REGULAR.TTF');
       font-family: "cfjackstory";
@@ -685,6 +682,10 @@ footer div>a>img {
 }
 #mentions p:last-of-type {
   margin-bottom: 15px;
+}
+#mentions p>a {
+  color: #01010f;
+  text-decoration: none;
 }
 
 h4 {
